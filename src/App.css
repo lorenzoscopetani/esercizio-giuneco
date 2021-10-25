@@ -1,38 +1,273 @@
-.App {
-  text-align: center;
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input,
+button {
+	outline: none;
+	border: none;
+	font-family: 'Lato', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a {
+	text-decoration: none;
+	color: #000;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+	max-width: 600px;
+	margin: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-container {
+	margin: auto;
+	max-width: 450px;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+form {
+	width: 75%;
+	background-color: #dddddd;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	border-radius: 5px;
+}
+
+form > h1 {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+.form-group > label {
+	margin-bottom: 10px;
+}
+
+.form-group > input {
+	height: 30px;
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 18px;
+}
+
+form > button {
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 25px;
+	background-color: #40a8e9;
+	border-radius: 5px;
+	font-size: 18px;
+	color: #fff;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+form > p {
+	text-align: center;
+}
+
+form > p > a {
+	color: #40a8e9;
+	margin-left: 5px;
+}
+
+form > p > a:hover {
+	text-decoration: underline;
+}
+
+header {
+	width: 100%;
+	padding: 20px 10px 20px 10px;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #dddddd;
+}
+
+.header__username > span {
+	font-style: italic;
+	color: #b4b3b3;
+}
+
+.header__logout {
+	font-weight: bold;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.header__logout:hover {
+	text-decoration: underline;
+}
+
+ul {
+	width: 100%;
+	padding: 20px 10px;
+	display: flex;
+	list-style: none;
+	align-items: center;
+	justify-content: space-around;
+}
+
+li {
+	text-transform: uppercase;
+	font-size: 14px;
+	padding: 5px 8px;
+	border-radius: 5px;
+}
+
+.active {
+	background-color: #40a8e9;
+}
+
+.active > a {
+	color: #fff;
+}
+
+.add-task__btn {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+	background-color: #dddddd;
+	font-weight: 700;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.add-task__btn > i {
+	margin-left: 10px;
+}
+
+.background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100vh;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.add-task__window {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #dddddd;
+	border-radius: 5px;
+	z-index: 2;
+	width: 450px;
+	padding: 10px;
+}
+
+@media (max-width: 768px) {
+	.add-task__window {
+		width: 80%;
+	}
+}
+
+.fa-time {
+	position: absolute;
+}
+
+.add-task__window > form {
+	width: 100%;
+}
+
+.add-task__window > form > h2 {
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 40px;
+}
+
+.add-task__window > form > p {
+	text-transform: uppercase;
+	font-size: 16px;
+	color: #e73e3e;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.task-list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 50px;
+}
+
+.task-item {
+	width: 90%;
+	padding: 15px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	box-shadow: 0 3px 30px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+}
+
+.task-item.backlog {
+	border-left: 5px solid #868686;
+}
+
+.task-item.inprogress {
+	border-left: 5px solid #ec894f;
+}
+
+.task-item.completed {
+	border-left: 5px solid #4fd365;
+}
+
+.task-item > h4 {
+	font-size: 20px;
+}
+
+.task-item > div {
+	margin-top: 25px;
+}
+
+.task-item > div > p {
+	margin-top: 5px;
+}
+
+.task-controls {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 25px;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.task-controls > p {
+	cursor: pointer;
+}
+
+.task-inprogress {
+	color: #ec894f;
+}
+
+.task-backlog {
+	color: #868686;
+}
+
+.task-completed {
+	color: #4fd365;
 }
